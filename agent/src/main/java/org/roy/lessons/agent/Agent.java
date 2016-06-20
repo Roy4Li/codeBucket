@@ -20,7 +20,7 @@ public class Agent {
 
     public static void agentmain(String args, Instrumentation inst) {
         System.out.println("agentmain invoked!!");
-        System.out.println("agentmain args:" + args);
+        System.out.println("agentmain args : " + args);
         inst.addTransformer(new Duration("org/roy/lessons/agent/client/service/CalService"));
     }
 }

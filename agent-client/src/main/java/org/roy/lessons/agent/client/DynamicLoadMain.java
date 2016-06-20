@@ -25,7 +25,6 @@ public class DynamicLoadMain {
         }
     }
 
-    // todo load时如何指定参数
     public static void loadAgent() {
         String nameOfRunningVM = ManagementFactory.getRuntimeMXBean().getName();
         int p = nameOfRunningVM.indexOf('@');
@@ -33,7 +32,7 @@ public class DynamicLoadMain {
 
         try {
             VirtualMachine vm = VirtualMachine.attach(pid);
-            vm.loadAgent(jarPath, "");
+            vm.loadAgent(jarPath, "helloAgentMain");
             vm.detach();
         } catch (Exception e) {
             throw new RuntimeException(e);
