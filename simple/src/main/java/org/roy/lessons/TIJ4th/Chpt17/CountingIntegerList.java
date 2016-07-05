@@ -1,6 +1,7 @@
 package org.roy.lessons.TIJ4th.Chpt17;
 
 import java.util.AbstractList;
+import static org.roy.lessons.TIJ4th.common.util.Print.*;
 
 public class CountingIntegerList extends AbstractList<Integer> {
 	

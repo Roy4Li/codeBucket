@@ -3,6 +3,7 @@ package org.roy.lessons.TIJ4th.Chpt17;
 //: containers/Lists.java
 //Things you can do with Lists.
 import java.util.*;
+import static org.roy.lessons.TIJ4th.common.util.Print.*;
 
 public class Lists {
 	private static boolean b;

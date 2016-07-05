@@ -3,6 +3,7 @@ package org.roy.lessons.TIJ4th.Chpt17;
 import java.util.*;
 
 import org.roy.lessons.TIJ4th.common.util.TextFile;
+import static org.roy.lessons.TIJ4th.common.util.Print.*;
 
 public class Ex04 {
 	private static final String path = "src/main/java/"+Ex04.class.getPackage().getName().replace('.', '\\');

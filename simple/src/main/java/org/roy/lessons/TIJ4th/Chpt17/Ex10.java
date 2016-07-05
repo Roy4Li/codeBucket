@@ -1,4 +1,5 @@
 package org.roy.lessons.TIJ4th.Chpt17;
+import static org.roy.lessons.TIJ4th.common.util.Print.*;
 
 //: containers/E10_CustomSortedSet.java
 /****************** Exercise 10 *****************

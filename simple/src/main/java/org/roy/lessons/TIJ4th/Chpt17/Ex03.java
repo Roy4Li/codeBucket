@@ -1,6 +1,7 @@
 package org.roy.lessons.TIJ4th.Chpt17;
 
 import java.util.*;
+import static org.roy.lessons.TIJ4th.common.util.Print.*;
 
 public class Ex03 {
 

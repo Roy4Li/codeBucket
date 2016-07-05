@@ -1,4 +1,6 @@
 package org.roy.lessons.TIJ4th.Chpt17;
+import static org.roy.lessons.TIJ4th.common.util.Print.*;
+
 // containers/Ex8.java
 // TIJ4 Chapter Containers, Exercise 8, page 821
 /* Create a generic, singly linked list class called SList, which, to keep

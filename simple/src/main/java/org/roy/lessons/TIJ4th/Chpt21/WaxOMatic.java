@@ -3,6 +3,7 @@ package org.roy.lessons.TIJ4th.Chpt21;
 //: concurrency/waxomatic/WaxOMatic.java
 //Basic task cooperation.
 import java.util.concurrent.*;
+import static org.roy.lessons.TIJ4th.common.util.Print.*;
 
 class Car {
 	private boolean waxOn = false;
