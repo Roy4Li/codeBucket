@@ -1,6 +1,7 @@
 package org.roy.lessons.temp;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
@@ -110,10 +111,24 @@ public class Java8Demo {
                 .collect(StringBuilder::new, (sb, ele) -> sb.append(ele.getName()).append(":").append(ele.getAge()).append(","), (left, right) -> left.append(right));
         System.out.println(strBuilder.toString());
 
-        List<Person> personList1 = personList.stream().collect(ArrayList::new, ArrayList::add, ArrayList::add);
+        List<Person> personList1 = personList.stream().collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
 
         // 并行流
         List<Person> personList2 = personList.parallelStream().filter(p -> p.getAge() < 10).collect(Collectors.toList());
+
+        // list转成map
+        Map<String, Person> personMap = personList.stream().collect(Collectors.toMap(p -> p.getName() + p.getAge(), Function.identity()));
+
+        HashMap<String,Person> personHashMap = personList.stream().collect(HashMap::new,(acc,ele)->acc.put(ele.getName()+ele.getAge(),ele),HashMap::putAll);
+        System.out.println(personHashMap);
+
+        Map<String,Person> pMap = new HashMap<>();
+        for(Person p:personList){
+            String key = p.getName()+p.getAge();
+            pMap.put(key,p);
+        }
+
+
     }
 
 
