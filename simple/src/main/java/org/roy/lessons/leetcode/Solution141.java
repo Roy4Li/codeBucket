@@ -1,75 +1,111 @@
-package org.roy.lessons.LeetCode;
+package org.roy.lessons.leetcode;
 
 import java.util.HashSet;
 import java.util.Set;
 
 /**
  * Level: Easy
- * Given a non-empty array of integers, every element appears twice except for one. Find that single one.
+ * Given a linked list, determine if it has a cycle in it.
  * <p>
- * Note:
- * <p>
- * Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
- * <p>
- * Example 1:
- * <p>
- * Input: [2,2,1]
- * Output: 1
- * Example 2:
- * <p>
- * Input: [4,1,2,1,2]
- * Output: 4
- * {@literal https://leetcode.com/problems/single-number/}
+ * To represent a cycle in the given linked list,
+ * we use an integer pos which represents the position (0-indexed) in the linked list where tail connects to.
+ * If pos is -1, then there is no cycle in the linked list.
+ * {@literal https://leetcode.com/problems/linked-list-cycle/}
  */
-public class Solution136 {
+public class Solution141 {
 
+    /**
+     *
+     * 快慢指针法,若有环,则一定会相遇
+     * @param head
+     * @return
+     */
+    public boolean hasCycle_4(ListNode head) {
+        if(head == null || head.next == null) {
+            return false;
+        }
+        ListNode slow = head;
+        ListNode fast = head.next;
+        while (fast != null && fast.next != null) {
+            if(fast.next == slow || fast.next.next == slow){
+                return true;
+            }
+            fast = fast.next.next;
+            slow = slow.next;
+        }
 
-    public int findSingle_1(int[] nums) {
-        if (nums.length == 0) {
-            throw new IllegalArgumentException("wrong input");
-        }
-        if (nums.length < 2) {
-            return nums[0];
-        }
-        Set<Integer> hashSet = new HashSet<>();
-        for (int i = 0; i < nums.length; i++) {
-            boolean isSingle = true;
-            if(hashSet.contains(nums[i])) {
-                continue;
-            }
-            hashSet.add(nums[i]);
-            for (int j = i + 1; j < nums.length; j++) {
-                if (nums[i] == nums[j]) {
-                    isSingle = false;
-                    break;
-                }
-            }
-            if (isSingle) {
-                return nums[i];
-            }
-        }
-        throw new IllegalArgumentException("not found");
+        return false;
     }
 
-    public int findSingle_2(int[] nums) {
-        int res = 0;
-        for(int num : nums) {
-            res ^= num;
+    public boolean hasCycle_3(ListNode head) {
+        if(head == null || head.next == null){
+            return false;
         }
-        return res;
+        ListNode flagNode = new ListNode(-1);
+        ListNode f = head;
+        while (f.next != null) {
+            if (f.next == flagNode) {
+                return true;
+            }
+            ListNode tmp = f;
+            f = f.next;
+            tmp.next = flagNode;
+        }
+        return false;
     }
+
+    public ListNode hasCycle_2(ListNode head) {
+        Set<ListNode> nodeSet = new HashSet<>();
+        ListNode f = head;
+        while (f.next != null) {
+            if (nodeSet.contains(f)) {
+                return f;
+            }
+            nodeSet.add(f);
+            f = f.next;
+        }
+        return null;
+    }
+
+
+
+    public boolean hasCycle_1(ListNode head) {
+        if(head == null){
+            return false;
+        }
+        Set<ListNode> nodeSet = new HashSet<>();
+        ListNode f = head;
+        while (f.next != null) {
+            if (nodeSet.contains(f)) {
+                return true;
+            }
+            nodeSet.add(f);
+            f = f.next;
+        }
+        return false;
+    }
+
 
     public static void main(String[] args) {
-        Solution136 instance = new Solution136();
-        int[] intArr = new int[]{
-                2,2,1
-        };
-        int b1 = 0b010101;
-        int b2 = 0b101010;
+        Solution141 instance = new Solution141();
+        ListNode n1 = new ListNode(1);
+        ListNode n2 = new ListNode(2);
+        ListNode n3 = new ListNode(3);
+        n1.next = n2;
+        n2.next = n3;
+//        n3.next = n1;
 
-        System.out.println("b1 ~ b2" + (~b2));
-        System.out.println(instance.findSingle_1(intArr));
-        System.out.println(instance.findSingle_2(intArr));
+        System.out.println(instance.hasCycle_4(n1));
+    }
 
+
+    public static class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int x) {
+            val = x;
+            next = null;
+        }
     }
 }
