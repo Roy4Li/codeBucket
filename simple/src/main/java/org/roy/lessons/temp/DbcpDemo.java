@@ -1,8 +1,8 @@
 package org.roy.lessons.temp;
 
-import java.sql.*;
+import org.apache.commons.dbcp2.BasicDataSource;
 
-import org.apache.commons.dbcp.BasicDataSource;
+import java.sql.*;
 
 public class DbcpDemo {
 	private BasicDataSource ds;
