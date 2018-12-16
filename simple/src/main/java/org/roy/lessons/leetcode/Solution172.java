@@ -1,5 +1,8 @@
 package org.roy.lessons.leetcode;
 
+/**
+ * just add some comment
+ */
 public class Solution172 {
 	public int trailingZeroes(int n) {
 		int ret = 0;
