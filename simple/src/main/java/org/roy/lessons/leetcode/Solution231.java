@@ -31,10 +31,28 @@ public class Solution231 {
     // 直接移位
     public boolean isPowerOfTwo_2(int n) {
         for (int i = 0; i < 31; i++) {
-            if(n == 1 << i){
+            if (n == 1 << i) {
                 return true;
             }
         }
         return false;
+    }
+
+    public boolean isPowerOfTwo_3(int n) {
+        if (n <= 0) {
+            return false;
+        }
+        return (n & (n - 1)) == 0;
+    }
+
+    // 通过除法
+    public boolean isPowerOfTwo_4(int n) {
+        if (n <= 0) {
+            return false;
+        }
+        while (n >= 2) {
+            n = n / 2;
+        }
+        return n == 1;
     }
 }
