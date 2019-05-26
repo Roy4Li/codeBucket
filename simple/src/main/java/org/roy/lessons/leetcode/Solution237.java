@@ -4,7 +4,6 @@ import com.google.common.collect.Lists;
 
 /**
  * {@literal https://leetcode.com/problems/delete-node-in-a-linked-list/}
- * BST,Binary Search Tree
  */
 
 public class Solution237 {
