@@ -9,6 +9,7 @@ import org.junit.Test;
  */
 public class GameNumberTest {
 
+
     @Test
     public void speakNormal() {
         Assert.assertTrue(GameNumber.say(1).equals("1"));
