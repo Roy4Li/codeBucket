@@ -1,5 +1,8 @@
 package org.roy.lessons.glidedrose;
 
+/**
+ * ready to refactor
+ */
 class GildedRose {
     Item[] items;
 
