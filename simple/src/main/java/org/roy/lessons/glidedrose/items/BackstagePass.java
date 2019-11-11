@@ -3,16 +3,26 @@ package org.roy.lessons.glidedrose.items;
 import org.roy.lessons.glidedrose.Item;
 
 public class BackstagePass extends Item {
-    public static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
     private static final String BACKSTAGE_PASS = "Backstage passes to a TAFKAL80ETC concert";
 
+    public BackstagePass(int sellIn, int quality) {
+        super(BACKSTAGE_PASS, sellIn, quality);
+    }
 
     @Override
-    protected boolean isBackStagePass() {
-        return true;
+    protected void updateQuality() {
+        increaseQuality();
+        if (sellIn < 11) {
+            increaseQuality();
+        }
+        if (sellIn < 6) {
+            increaseQuality();
+        }
     }
 
-    public BackstagePass(int sellIn, int quality) {
-        super(BACKSTAGE_PASS,sellIn,quality);
+    @Override
+    protected void updateQualityAfterExpired() {
+        quality = 0;
     }
+
 }

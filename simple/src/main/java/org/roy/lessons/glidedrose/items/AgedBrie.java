@@ -10,7 +10,14 @@ public class AgedBrie extends Item {
     }
 
     @Override
-    protected boolean isAgedBrie() {
-        return true;
+    protected void updateQuality() {
+        increaseQuality();
     }
+
+    @Override
+    protected void updateQualityAfterExpired() {
+        increaseQuality();
+    }
+
+
 }

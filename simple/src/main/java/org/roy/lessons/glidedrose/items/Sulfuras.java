@@ -6,11 +6,21 @@ public class Sulfuras extends Item {
     public static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
 
     public Sulfuras(int sellIn, int quality) {
-        super(SULFURAS,sellIn,quality);
+        super(SULFURAS, sellIn, quality);
     }
 
     @Override
-    protected boolean isSulfuras() {
-        return true;
+    protected void updateSellInDays() {
+        return;
+    }
+
+    @Override
+    protected void updateQuality() {
+        return;
+    }
+
+    @Override
+    protected void updateQualityAfterExpired() {
+        return;
     }
 }
