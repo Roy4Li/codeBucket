@@ -3,7 +3,8 @@ package org.roy.lessons.glidedrose;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 
 public class GildedRoseTest {
 
@@ -12,7 +13,7 @@ public class GildedRoseTest {
         Item[] items = new Item[] {new Item("foo", 0, 0)};
         GildedRose app = new GildedRose(items);
         app.passOneDay();
-        assertEquals("fixme", app.items[0].name);
+        assertThat(app.items[0].name,is("foo"));
     }
 
 }
