@@ -2,7 +2,7 @@ package org.roy.lessons.glidedrosev2;
 
 import org.junit.Test;
 
-import static org.hamcrest.core.IsNot.not;
+import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
 
 public class GlidedRoseTest {
