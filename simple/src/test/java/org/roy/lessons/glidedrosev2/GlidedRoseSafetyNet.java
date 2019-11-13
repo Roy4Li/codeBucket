@@ -11,6 +11,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 public class GlidedRoseSafetyNet {
+
     @Test
     public void equalToBaseLine() throws IOException {
         String output = TextTestFixture.outputBaseLine();

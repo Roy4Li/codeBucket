@@ -11,7 +11,7 @@ public class GlidedRoseTest {
     public void foo() {
         Item[] items = new Item[]{new Item("foo", 0, 0)};
         GlidedRose app = new GlidedRose(items);
-        app.updateQuality();
+        app.passOneDay();
         assertThat(app.items[0].name, not("fixme"));
     }
 
