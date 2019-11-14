@@ -29,4 +29,71 @@ public class Item {
     public String toString() {
         return this.name + ", " + this.sellIn + ", " + this.quality;
     }
+
+    void passOneDay() {
+        updateQuality();
+
+        updateSellInDays();
+
+        if (isExpired()) {
+            updateQualityAfterExpired();
+        }
+    }
+
+    private void updateQuality() {
+        if (!isAgedBrie()
+                && !isBackstagePass()) {
+            if (quality > 0) {
+                if (!isSulfuras()) {
+                    quality = quality - 1;
+                }
+            }
+        } else {
+            if (quality < 50) {
+                quality = quality + 1;
+
+                if (isBackstagePass()) {
+                    if (sellIn < 11) {
+                        if (quality < 50) {
+                            quality = quality + 1;
+                        }
+                    }
+
+                    if (sellIn < 6) {
+                        if (quality < 50) {
+                            quality = quality + 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private void updateQualityAfterExpired() {
+        if (!isAgedBrie()) {
+            if (!isBackstagePass()) {
+                if (quality > 0) {
+                    if (!isSulfuras()) {
+                        quality = quality - 1;
+                    }
+                }
+            } else {
+                quality = 0;
+            }
+        } else {
+            if (quality < 50) {
+                quality = quality + 1;
+            }
+        }
+    }
+
+    private boolean isExpired() {
+        return sellIn < 0;
+    }
+
+    private void updateSellInDays() {
+        if (!isSulfuras()) {
+            sellIn = sellIn - 1;
+        }
+    }
 }
