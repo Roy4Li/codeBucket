@@ -15,6 +15,5 @@ public class ItemTest {
         assertThat(backStagePass.quality,is(21));
         backStagePass.passOneDay();
         assertThat(backStagePass.quality,is(23));
-
     }
 }

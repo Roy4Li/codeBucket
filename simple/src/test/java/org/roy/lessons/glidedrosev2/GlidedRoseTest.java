@@ -9,7 +9,7 @@ public class GlidedRoseTest {
 
     @Test
     public void foo() {
-        Item[] items = new Item[]{new Item("foo", 0, 0)};
+        Item[] items = new Item[]{Item.createNormal("foo", 0, 0)};
         GlidedRose app = new GlidedRose(items);
         app.passOneDay();
         assertThat(app.items[0].name, not("fixme"));

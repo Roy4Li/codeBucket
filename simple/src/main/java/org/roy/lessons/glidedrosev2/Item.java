@@ -7,22 +7,27 @@ public class Item {
 
     public int quality;
 
-    public Item(String name, int sellIn, int quality) {
+    protected Item(String name, int sellIn, int quality) {
         this.name = name;
         this.sellIn = sellIn;
         this.quality = quality;
     }
 
-    public boolean isSulfuras() {
+
+    private boolean isSulfuras() {
         return name.equals("Sulfuras, Hand of Ragnaros");
     }
 
-    public boolean isBackstagePass() {
+    private boolean isBackstagePass() {
         return name.equals("Backstage passes to a TAFKAL80ETC concert");
     }
 
-    public boolean isAgedBrie() {
+    private boolean isAgedBrie() {
         return name.equals("Aged Brie");
+    }
+
+    static public Item createNormal(String name, Integer sellIn, Integer quality) {
+        return new Item(name, sellIn, quality);
     }
 
     @Override
@@ -31,41 +36,17 @@ public class Item {
     }
 
     void passOneDay() {
-        updateQuality();
-
         updateSellInDays();
+        updateQuality();
 
         if (isExpired()) {
             updateQualityAfterExpired();
         }
     }
 
-    private void updateQuality() {
-        if (!isAgedBrie()
-                && !isBackstagePass()) {
-            if (quality > 0) {
-                if (!isSulfuras()) {
-                    quality = quality - 1;
-                }
-            }
-        } else {
-            if (quality < 50) {
-                quality = quality + 1;
-
-                if (isBackstagePass()) {
-                    if (sellIn < 11) {
-                        if (quality < 50) {
-                            quality = quality + 1;
-                        }
-                    }
-
-                    if (sellIn < 6) {
-                        if (quality < 50) {
-                            quality = quality + 1;
-                        }
-                    }
-                }
-            }
+    protected void updateQuality() {
+        if (quality > 0) {
+            quality = quality - 1;
         }
     }
 
@@ -91,9 +72,7 @@ public class Item {
         return sellIn < 0;
     }
 
-    private void updateSellInDays() {
-        if (!isSulfuras()) {
-            sellIn = sellIn - 1;
-        }
+    protected void updateSellInDays() {
+        sellIn = sellIn - 1;
     }
 }
