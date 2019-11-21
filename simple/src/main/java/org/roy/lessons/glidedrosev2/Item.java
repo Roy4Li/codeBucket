@@ -14,18 +14,6 @@ public class Item {
     }
 
 
-    private boolean isSulfuras() {
-        return name.equals("Sulfuras, Hand of Ragnaros");
-    }
-
-    private boolean isBackstagePass() {
-        return name.equals("Backstage passes to a TAFKAL80ETC concert");
-    }
-
-    private boolean isAgedBrie() {
-        return name.equals("Aged Brie");
-    }
-
     static public Item createNormal(String name, Integer sellIn, Integer quality) {
         return new Item(name, sellIn, quality);
     }
@@ -50,29 +38,18 @@ public class Item {
         }
     }
 
-    private void updateQualityAfterExpired() {
-        if (!isAgedBrie()) {
-            if (!isBackstagePass()) {
-                if (quality > 0) {
-                    if (!isSulfuras()) {
-                        quality = quality - 1;
-                    }
-                }
-            } else {
-                quality = 0;
-            }
-        } else {
-            if (quality < 50) {
-                quality = quality + 1;
-            }
+    protected void updateQualityAfterExpired() {
+        if (quality > 0) {
+            quality = quality - 1;
         }
+    }
+
+
+    protected void updateSellInDays() {
+        sellIn = sellIn - 1;
     }
 
     private boolean isExpired() {
         return sellIn < 0;
-    }
-
-    protected void updateSellInDays() {
-        sellIn = sellIn - 1;
     }
 }
