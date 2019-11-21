@@ -9,15 +9,11 @@ public class AgedBrie extends Item {
 
     @Override
     protected void updateQuality() {
-        if (quality < 50) {
-            quality = quality + 1;
-        }
+        increaseQualityByOne();
     }
 
     @Override
     protected void updateQualityAfterExpired() {
-        if (quality < 50) {
-            quality = quality + 1;
-        }
+        increaseQualityByOne();
     }
 }

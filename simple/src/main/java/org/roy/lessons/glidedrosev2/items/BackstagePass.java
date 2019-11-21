@@ -14,15 +14,11 @@ public class BackstagePass extends Item {
             quality = quality + 1;
 
             if (sellIn < 10) {
-                if (quality < 50) {
-                    quality = quality + 1;
-                }
+                increaseQualityByOne();
             }
 
             if (sellIn < 5) {
-                if (quality < 50) {
-                    quality = quality + 1;
-                }
+                increaseQualityByOne();
             }
         }
     }

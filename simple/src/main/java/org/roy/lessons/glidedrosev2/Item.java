@@ -26,19 +26,29 @@ public class Item {
     void passOneDay() {
         updateSellInDays();
         updateQuality();
-
         if (isExpired()) {
             updateQualityAfterExpired();
         }
     }
 
-    protected void updateQuality() {
+    final protected void increaseQualityByOne() {
+        if (quality < 50) {
+            quality = quality + 1;
+        }
+    }
+
+    final protected void decreaseQualityByOne() {
         if (quality > 0) {
             quality = quality - 1;
         }
     }
 
+    protected void updateQuality() {
+        decreaseQualityByOne();
+    }
+
     protected void updateQualityAfterExpired() {
+        decreaseQualityByOne();
         if (quality > 0) {
             quality = quality - 1;
         }

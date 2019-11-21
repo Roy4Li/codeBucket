@@ -6,8 +6,8 @@ public class Conjured extends Item {
 
     @Override
     protected void updateQuality() {
-        super.updateQuality();
-        super.updateQuality();
+        decreaseQualityByOne();
+        decreaseQualityByOne();
     }
 
     public Conjured(Integer sellIn, Integer quality) {
@@ -16,7 +16,7 @@ public class Conjured extends Item {
 
     @Override
     protected void updateQualityAfterExpired() {
-        super.updateQualityAfterExpired();
-        super.updateQualityAfterExpired();
+        decreaseQualityByOne();
+        decreaseQualityByOne();
     }
 }
