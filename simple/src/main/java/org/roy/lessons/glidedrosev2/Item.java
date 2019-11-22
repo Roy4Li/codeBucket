@@ -32,12 +32,14 @@ public class Item {
     }
 
     final protected void increaseQualityByOne() {
+        // make sure not exceed
         if (quality < 50) {
             quality = quality + 1;
         }
     }
 
     final protected void decreaseQualityByOne() {
+        // make sure not be negative
         if (quality > 0) {
             quality = quality - 1;
         }

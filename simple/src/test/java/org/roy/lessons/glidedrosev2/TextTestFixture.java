@@ -10,6 +10,9 @@ import java.io.PrintStream;
 
 import static org.roy.lessons.glidedrosev2.Item.*;
 
+/**
+ * text-based test methodology
+ */
 public class TextTestFixture {
     public static void main(String[] args) {
         String baseLine = outputBaseLine();

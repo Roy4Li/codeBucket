@@ -6,11 +6,9 @@
     <artifactId>codeBucket</artifactId>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>research</module>
-        <module>agent</module>
-        <module>agent-client</module>
         <module>simple</module>
-        <module>spring-boot</module>
+        <!-- 练功房 -->
+        <module>dojo</module>
     </modules>
     <packaging>pom</packaging>
 
