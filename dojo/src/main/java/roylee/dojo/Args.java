@@ -9,17 +9,15 @@ import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
 public class Args {
-    private List<Character> booleanSchemaList;
-    private List<Character> intSchemaList;
-    private Map<Character, Integer> intArgMap;
-    private String[] arguments;
+    private List<Character> booleanSchemaList = new ArrayList<>();
+    private List<Character> intSchemaList = new ArrayList<>();
+    private Map<Character, Integer> intArgMap = new HashMap<>();
 
 
     public Args() {
     }
 
     public Args(String schema, String[] arguments) {
-        this.arguments = arguments;
         parseSchema(schema);
         parseArguments(arguments);
     }
@@ -52,9 +50,11 @@ public class Args {
     private void parseSchema(String schemaStr) {
         String[] schemaArray = schemaStr.split(",");
         for (String schema : schemaArray) {
+            // l
             if (schema.length() == 1) {
                 addBooleanSchema(schema.charAt(0));
             }
+            // p#
             if (schema.length() == 2 && schema.matches("[a-zA-Z]#")) {
                 Character intSchema = schema.charAt(0);
                 addIntSchema(intSchema);
@@ -80,19 +80,18 @@ public class Args {
         if (!booleanSchemaList.contains(letter)) {
             return false;
         }
-        if (isNull(arguments) || arguments.length == 0) {
-            return false;
-        }
-        for (String arg : arguments) {
-            if (arg.equals("-" + letter)) {
-                return true;
-            }
-        }
         return false;
     }
 
     public int getInt(Character schemaChar) {
+        Integer intArg = intArgMap.get(schemaChar);
+        if (isNull(intArg)) {
+            throw new IllegalArgumentException("error");
+        }
+        return intArg;
+    }
 
-        return Integer.parseInt(arguments[1]);
+    public String getString(Character schema) {
+        return "";
     }
 }

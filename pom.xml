@@ -12,6 +12,10 @@
     </modules>
     <packaging>pom</packaging>
 
+    <properties>
+        <jdk.version>1.8</jdk.version>
+    </properties>
+
     <name>codeBucket</name>
     <url>http://maven.apache.org</url>
 
@@ -28,5 +32,24 @@
             </snapshots>
         </repository>
     </repositories>
+
+    <build>
+        <plugins>
+
+            <!-- 编译插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <!-- 源代码使用的开发版本 -->
+                    <source>${jdk.version}</source>
+
+                    <!-- 需要生成的目标class文件的编译版本 -->
+                    <target>${jdk.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
