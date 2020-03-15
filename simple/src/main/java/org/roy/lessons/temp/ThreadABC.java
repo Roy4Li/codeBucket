@@ -1,5 +1,7 @@
 package org.roy.lessons.temp;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 // 3个线程循环打印ABC，一个打印A，一个打印B，一个打印C
 public class ThreadABC implements Runnable {
 	private static int lock = 0;
@@ -11,6 +13,8 @@ public class ThreadABC implements Runnable {
 	}
 
 	public void run() {
+		AtomicInteger ac = new AtomicInteger();
+		ac.incrementAndGet();
 		int cnt = 10;
 		while (cnt > 0) {
 			if(key == lock){
