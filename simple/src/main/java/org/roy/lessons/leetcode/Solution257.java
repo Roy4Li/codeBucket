@@ -9,7 +9,7 @@ import java.util.List;
  * {@literal https://leetcode.com/problems/binary-tree-paths/}
  */
 public class Solution257 {
-
+    private static String prefixOrder = "";
 
     public static void main(String[] args) {
         Solution257 instance = new Solution257();
@@ -24,9 +24,23 @@ public class Solution257 {
         List<String> result = instance.binaryTreePaths(root);
         Preconditions.checkArgument(result.size() == 2);
         System.out.println(result);
+
+        instance.prefixOrder(root);
+        System.out.println(prefixOrder);
     }
 
     private List<String> result = new ArrayList<>();
+
+    public void prefixOrder(TreeNode root){
+       // do sth on root node
+        if(root.left != null){
+            prefixOrder(root.left);
+        }
+        System.out.println(root.val);
+        if(root.right != null){
+            prefixOrder(root.right);
+        }
+    }
 
     public List<String> binaryTreePaths(TreeNode root) {
         if (null != root) {
